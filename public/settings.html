@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="png/logo.png" id="favicon"/>
+    <title>Truffled - Settings</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <div id="loading-screen">
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <h5 id="loading-text">Loading, please wait...</h5>
+    </div>
+
+    <div class="navbar">
+        <div class="navbar-left">
+            <img src="png/logo.svg" alt="Truffled Logo" class="logo">
+            <span class="logo-text">Truffled</span>
+        </div>
+        <div class="navbar-right">
+            <a href="index.html">
+                <img src="png/house-solid.svg" alt="Home">
+                <span class="label">Home</span>
+            </a>
+            <a href="games.html">
+                <img src="png/gamepad-solid.svg" alt="Games">
+                <span class="label">Games</span>
+            </a>
+            <a href="tools.html">
+                <img src="png/tool.svg" alt="Tools">
+                <span class="label">Tools</span>
+            </a>
+            <a href="https://discord.gg/4pBKVKhfTQ">
+                <img src="png/other.svg" alt="Discord">
+                <span class="label">Discord</span>
+            </a>
+            <a href="settings.html" class="active">
+                <img src="png/gear-solid.svg" alt="Settings">
+                <span class="label">Settings</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="settings-container">
+        <section id="panicKeySettings" class="settings-section">
+            <h2>panic key settings</h2>
+            <p id="currentPanicKey">current panic key: </p>
+            <p id="instruction">press the button below to change your panic key.</p>
+            <button onclick="changePanicKey()">change panic key</button>
+        </section>
+
+        <section id="tabCustomization" class="settings-section">
+            <h2>tab customization</h2>
+            <form id="tabForm">
+                <label for="tabTitle">tab title:</label>
+                <input type="text" id="tabTitle" name="tabTitle" placeholder="Enter new tab title">
+
+                <label for="tabFavicon">tab Favicon:</label>
+                <input type="file" id="tabFavicon" name="tabFavicon" accept="image/png, image/jpeg">
+
+                <button type="submit">update tab</button>
+            </form>
+        </section>
+
+        <section id="debugMode" class="settings-section">
+            <h2>debug mode</h2>
+            <p>stats</p>
+            <button onclick="toggleDebugMode()">debug mode</button>
+            <p>debug from frogie</p>
+            <div id="debugStats" style="display: none;">
+                <p>FPS: <span id="fps">0</span></p>
+                <p>CPU: <span id="cpu">0%</span></p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById("currentPanicKey").innerText = "Current Panic Key: " + (localStorage.getItem("panicKey") || "2");
+
+        function changePanicKey() {
+            const newKey = prompt("Enter your new Panic Key:");
+            if (newKey) {
+                localStorage.setItem("panicKey", newKey);
+                document.getElementById("currentPanicKey").innerText = "Current Panic Key: " + newKey;
+                alert("Panic Key updated successfully!");
+            }
+        }
+
+        const tabForm = document.getElementById("tabForm");
+        tabForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const newTitle = document.getElementById("tabTitle").value;
+            const faviconInput = document.getElementById("tabFavicon");
+            if (newTitle) {
+                document.title = newTitle;
+                localStorage.setItem("tabTitle", newTitle);
+            }
+            if (faviconInput.files && faviconInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const favicon = document.getElementById("favicon");
+                    favicon.href = event.target.result;
+                    localStorage.setItem("favicon", event.target.result);
+                };
+                reader.readAsDataURL(faviconInput.files[0]);
+            }
+            alert("Tab customization updated!");
+        });
+
+        let animationFrameId;
+        let lastFrameTime = performance.now();
+        let fpsCounter = document.getElementById("fps");
+        let cpuCounter = document.getElementById("cpu");
+
+        function toggleDebugMode() {
+            const debugStats = document.getElementById("debugStats");
+            if (debugStats.style.display === "none") {
+                debugStats.style.display = "block";
+                startDebugging(); 
+            } else {
+                debugStats.style.display = "none";
+                stopDebugging(); 
+            }
+        }
+
+        function startDebugging() {
+            lastFrameTime = performance.now(); 
+            updateFPS();
+        }
+
+        function stopDebugging() {
+            cancelAnimationFrame(animationFrameId);
+        }
+
+        function updateFPS() {
+            const now = performance.now();
+            const delta = now - lastFrameTime;
+            const fps = Math.round(1000 / delta);
+            lastFrameTime = now;
+
+            let cpuUsage = 0;
+            const memory = performance.memory;
+            if (memory) {
+                const usedMemory = memory.usedJSHeapSize / memory.totalJSHeapSize * 100;
+                cpuUsage = Math.round(usedMemory);
+            }
+
+            fpsCounter.textContent = fps;
+            cpuCounter.textContent = cpuUsage + "%";
+
+            animationFrameId = requestAnimationFrame(updateFPS);
+        }
+    </script>
+        <div class="power-indicator">
+            <i class="fa-solid fa-bolt"></i>
+            <div class="battery-container">
+                <div class="battery-bar"></div>
+            </div>
+            <span id="power-text">Power: --%</span>
+        </div>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WLTG1S4STB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-WLTG1S4STB');
+    </script>
+    <div class="power-indicator">
+        <i class="fa-solid fa-bolt"></i>
+        <div class="battery-container">
+            <div class="battery-bar"></div>
+        </div>
+        <span id="power-text">Power: --%</span>
+    </div>
+        <script src="battery.js"></script>
+    <script src="/js/panic.js"></script>
+    <script src="/js/loading.js"></script>
+<script src="/js/particles.js"></script>
+<script src="/js/app.js"></script>
+<script type='text/javascript' src='//pl25308818.effectiveratecpm.com/1e/ca/0b/1eca0b39c37917b7f099788bd311eae3.js'></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="png/logo.png"/>
+    <title>Truffled - Iframe</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="index-page"> <!--the monsta is in my pants-->
+
+    <div id="particles-js"></div>
+
+    <div id="loading-screen">
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <h5 id="loading-text">Loading, please wait...</h5>
+    </div>
+
+    <div class="navbar">
+        <div class="navbar-left">
+            <img src="png/logo.svg" alt="Truffled Logo" class="logo">
+            <span class="logo-text">Truffled</span>
+        </div>
+        <div class="navbar-right">
+            <a href="index.html">
+                <img src="png/house-solid.svg" alt="Home">
+                <span class="label">Home</span>
+            </a>
+            <a href="games.html">
+                <img src="png/gamepad-solid.svg" alt="Games">
+                <span class="label">Games</span>
+            </a>
+            <a href="tools.html">
+                <img src="png/tool.svg" alt="tool">
+                <span class="label">Tools</span>
+            </a>
+            <a href="https://discord.gg/4pBKVKhfTQ">
+                <img src="png/other.svg" alt="Discord">
+                <span class="label">Discord</span>
+            </a>
+            <a href="settings.html">
+                <img src="png/gear-solid.svg" alt="Settings">
+                <span class="label">Settings</span>
+            </a>
+        </div>
+    </div>
+    <div class="content">
+        <iframe id="gameframe" class="gameframe" src="/404.html"></iframe> 
+    <div class="iframeiconshere">
+        <a href="javascript:void(0)" id="fullscreen"><i class="fas fa-expand"></i></a>
+        <a href="javascript:void(0)" id="iframeicons" onclick="document.getElementById('gameframe').src = document.getElementById('gameframe').src;"><i class="fas fa-sync-alt"></i></a>
+        
+</div>
+<div class="power-indicator">
+    <i class="fa-solid fa-bolt"></i>
+    <div class="battery-container">
+        <div class="battery-bar"></div>
+    </div>
+    <span id="power-text">Power: --%</span>
+</div>
+    <script src="battery.js"></script>
+    <script src="/js/panic.js"></script>
+    <script src="/js/loading.js"></script>
+    <script src="/js/particles.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/static/uv/uv.bundle.js" defer></script>
+    <script src="/static/uv/uv.config.js" defer></script>
+    <script src="/static//register-sw.js" defer></script>
+</body>
+
+<script>
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    var url = getUrlParameter('url');
+    if (url) {
+        document.getElementById('gameframe').src = url;
+    }
+
+    document.getElementById('fullscreen').addEventListener('click', function () {
+        var iframe = document.getElementById('gameframe');
+        if (iframe.requestFullscreen) {
+            iframe.requestFullscreen();
+        } else if (iframe.mozRequestFullScreen) {
+            iframe.mozRequestFullScreen();
+        } else if (iframe.webkitRequestFullscreen) {
+            iframe.webkitRequestFullscreen();
+        } else if (iframe.msRequestFullscreen) {
+            iframe.msRequestFullscreen();
+        }
+    });
+    
+</script>
+<script type='text/javascript' src='//pl25308818.effectiveratecpm.com/1e/ca/0b/1eca0b39c37917b7f099788bd311eae3.js'></script>
+<div id="container-f46cb5315545fb8abc8b66cda3ec3b6b"></div>
+</html>
