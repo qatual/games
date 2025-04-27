@@ -47,10 +47,8 @@
         </div>
     </div>
     <div class="content">
-        <h1>Games</h1>
-        <div class="index-page">
-            <input type="text" id="gamesearch" class="search-bar" placeholder="Search..." />
-        </div>
+        <h4>Games</h4>
+        <p>play freely...</p>
     
         <div class="container">
             <div class="game-gallery" id="gameGallery">
@@ -605,43 +603,17 @@
                         <img src="/games/10minutestilldawn/splash.png" alt="10 Minutes Till Dawn" class="game-thumbnail">
                     </a>
                 </div>
+                <div class="game" data-name="Time Shooter 2">
+                    <a href="/iframe.html?url=/games/timeshooter2/index.html" class="game-link" data-name="Time Shooter 2">
+                        <img src="/games/timeshooter2/logo.png" alt="Time Shooter 2" class="game-thumbnail">
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8970459375287677" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WLTG1S4STB"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-function searchGames() {
-var txt = $("#gamesearch").val();
-if (txt === "") {
-    $(".game").show(); 
-} else {
-    $(".game").hide(); 
-    $(".game").each(function () {
-        if ($(this).text().toUpperCase().indexOf(txt.toUpperCase()) !== -1 || $(this).data('id') === parseInt(txt)) {
-            $(this).show(); 
-        }
-    });
-}
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-let urlParams = new URLSearchParams(window.location.search);
-let q = urlParams.get("q");
-if (q) {
-    document.getElementById("gamesearch").value = q;
-    searchGames();
-    urlParams.delete("q");
-    window.history.replaceState({}, document.title, location.pathname);
-}
-document.getElementById("gamesearch").addEventListener("input", () => {
-    searchGames();  
-});
-});
-
-</script>
 </body>
 <script>
   window.dataLayer = window.dataLayer || [];
