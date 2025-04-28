@@ -1,0 +1,52 @@
+.power-indicator {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(43, 43, 43, 0.75);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 9999;
+    font-family: sans-serif;
+  }
+
+
+  .battery-container {
+    width: 60px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .battery-bar {
+    height: 100%;
+    background-color: #4caf50; 
+    width: 0%;
+  }
+
+  .power-indicator.low {
+    color: #ff4d4d; 
+  }
+
+  .power-indicator.medium {
+    color: #ffa500; 
+  }
+
+  .power-indicator.high {
+    color: #ffeb3b;
+  }
+
+  .power-indicator.full {
+    color: #4caf50; 
+  }
+
+  #power-text {
+    font-size: 14px;
+    font-weight: bold;
+  }

@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="png/logo.png"/>
     <title>Truffled</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/effect.css">
+    <link rel="stylesheet" href="css/battery.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://atugatran.github.io/FontAwesome6Pro/css/all.min.css"/>
 </head>
@@ -22,7 +22,7 @@
         </div>
         <h5 id="loading-text">Loading, please wait...</h5>
     </div>
-
+    <script src="battery.js"></script>
     <div class="navbar">
         <div class="navbar-left">
             <img src="png/logo.svg" alt="Truffled Logo" class="logo">
@@ -79,10 +79,18 @@
             document.getElementById("random-text").textContent = texts[Math.floor(Math.random() * texts.length)];
         </script>
 
+<div class="power-indicator">
+    <i class="fa-solid fa-bolt"></i>
+    <div class="battery-container">
+        <div class="battery-bar"></div>
+    </div>
+    <span id="power-text">Power: --%</span>
+</div>
+
 
 
     </div>
-    <script src="battery.js"></script>
+    <script src="js/battery.js" charset="UTF-8" defer></script>
     <script src="/active/uv/uv.bundle.js" charset="UTF-8" defer></script>
     <script src="/active/uv/uv.config.js" charset="UTF-8" defer></script>
     <script src="/active/register-sw.js" charset="UTF-8" defer></script>

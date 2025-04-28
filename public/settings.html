@@ -6,6 +6,8 @@
     <link rel="icon" type="image/png" href="png/logo.png" id="favicon"/>
     <title>Truffled - Settings</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/battery.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -159,6 +161,15 @@
             animationFrameId = requestAnimationFrame(updateFPS);
         }
     </script>
+
+<div class="power-indicator">
+    <i class="fa-solid fa-bolt"></i>
+    <div class="battery-container">
+        <div class="battery-bar"></div>
+    </div>
+    <span id="power-text">Power: --%</span>
+</div>
+<script src="js/battery.js" charset="UTF-8" defer></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WLTG1S4STB"></script>
     <script>

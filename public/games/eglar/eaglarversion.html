@@ -7,6 +7,7 @@
     <title>Truffled - Version</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/tools.css">
+    <link rel="stylesheet" href="/css/battery.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -68,8 +69,15 @@
                 </a>
             </div>
         
-    
-<script src="battery.js"></script>
+            <div class="power-indicator">
+                <i class="fa-solid fa-bolt"></i>
+                <div class="battery-container">
+                    <div class="battery-bar"></div>
+                </div>
+                <span id="power-text">Power: --%</span>
+            </div>
+            <script src="/js/battery.js" charset="UTF-8" defer></script>
+
     <script src="/js/loading.js"></script>
 <script src="/js/particles.js"></script>
 <script src="/js/app.js"></script>

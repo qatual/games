@@ -6,6 +6,8 @@
     <link rel="icon" type="image/png" href="png/logo.png"/>
     <title>Truffled - Iframe</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/battery.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -56,8 +58,16 @@
         <a href="javascript:void(0)" id="fullscreen"><i class="fas fa-expand"></i></a>
         <a href="javascript:void(0)" id="iframeicons" onclick="document.getElementById('gameframe').src = document.getElementById('gameframe').src;"><i class="fas fa-sync-alt"></i></a>
         
-</div>
-    <script src="battery.js"></script>
+        <div class="power-indicator">
+            <i class="fa-solid fa-bolt"></i>
+            <div class="battery-container">
+                <div class="battery-bar"></div>
+            </div>
+            <span id="power-text">Power: --%</span>
+        </div>
+        <script src="js/battery.js" charset="UTF-8" defer></script>
+
+    </div>
     <script src="/js/panic.js"></script>
     <script src="/js/loading.js"></script>
     <script src="/js/particles.js"></script>
