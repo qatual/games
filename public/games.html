@@ -48,7 +48,7 @@
     </div>
     <div class="content">
         <h4>Games</h4>
-        <h6>game count: 109</h6>
+        <h6>game count: 110</h6>
         <p>play freely...</p>
     
         <div class="container">
@@ -58,10 +58,22 @@
                         <img src="/png/games/forms.png" alt="Game Suggestions" class="game-thumbnail">
                     </a>
                 </div>
-            
+                
+                <div class="game" data-name="Random game" onclick="pickRandomGame()">
+                    <a href="javascript:void(0);" class="game-link" data-name="Random game">
+                        <video src="png/vid/random.mp4" autoplay muted loop playsinline class="game-thumbnail"></video>
+                    </a>
+                </div>
+
                 <div class="game" data-name="1">
                     <a href="/iframe.html?url=/games/1/index.html" class="game-link" data-name="1">
                         <img src="png/games/12.png" alt="1" class="game-thumbnail">
+                    </a>
+                </div>
+
+                <div class="game" data-name="2048">
+                    <a href="/iframe.html?url=/games/2048/index.html" class="game-link" data-name="2048">
+                        <img src="png/games/2048.png" alt="2048" class="game-thumbnail">
                     </a>
                 </div>
             
@@ -233,7 +245,7 @@
                 </div>
 
                 <div class="game" data-name="FNAF4">
-                    <a href="/iframe.html?url=/games/fnaf2/index.html" class="game-link" data-name="FNAF4">
+                    <a href="/iframe.html?url=/games/fnaf4/index.html" class="game-link" data-name="FNAF4">
                         <img src="/games/fnaf4/logo.webp" alt="FNAF4" class="game-thumbnail">
                     </a>
                 </div>
@@ -688,6 +700,8 @@
         </div>
     </div>
 
+    
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8970459375287677" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WLTG1S4STB"></script>
 </body>
@@ -698,6 +712,20 @@
 
   gtag('config', 'G-WLTG1S4STB');
 </script>
+<script>
+    function pickRandomGame() {
+        const games = document.querySelectorAll('.game');
+        if (games.length > 0) {
+            const randomIndex = Math.floor(Math.random() * games.length);
+            const randomGameLink = games[randomIndex].querySelector('.game-link');
+            if (randomGameLink) {
+                window.location.href = randomGameLink.href;
+            }
+        }
+    }
+    </script>
+
+    
 <script src="battery.js"></script>
 <script src="/js/js/panic.js"></script>
 <script src="/js/loading.js"></script>
