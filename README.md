@@ -1,1 +1,1 @@
-### this github will not bew updated no more
+### this github will not be updated no more
